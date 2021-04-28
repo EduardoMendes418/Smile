@@ -9,6 +9,8 @@ import { Template } from './components/templatecomponents';
 //Componets Parcial
 import Header  from './components/partials/Header';
 import Footer from './components/partials/Footer'; 
+// App.css
+import './App.css';
 
 const Page = (props) => {
   return(
