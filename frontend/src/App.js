@@ -14,7 +14,6 @@ import './App.css';
 
 const Page = (props) => {
   return(
-
     <BrowserRouter>
         <Template>
           <Header/>

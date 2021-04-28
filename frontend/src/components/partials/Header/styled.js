@@ -11,16 +11,68 @@ export const HeaderArea = styled.div`
         display: flex;
     }
 
-    .logo img{
-        width: 120px;
+    .logo{
         flex: 1;
         display: flex;
         align-items: center;
-        height: 60px;
+    }
+
+    .logo img{
+        margin-top: 5px;
+        width: 120px;
     }
 
     a{
        text-decoration: none; 
     }
+
+    nav{
+        padding-top: 15px;
+        padding-bottom: 10px;
+
+        ul, li {
+            margin: 0 ;
+            padding: 0;
+            list-style: none;
+        }
+        
+        ul{
+            display: flex;
+            align-items: center !important;
+            height: 40px;
+        }
+
+        li{
+            margin-left: 20px;
+            maegin-right: 20px;
+
+            a{
+                color: #000;
+                font-size: 20px;
+                text-decoration: none;
+
+                &:hover{
+                    color: #999;
+                }
+
+                &.button{
+                    background-color:#00e658;
+                    border-radius: 4px;
+                    color: #fff;
+                    padding: 5px 15px;
+                }
+
+                &.button:hover{
+                    background-color: #00e608;
+                    color: #000;
+                }
+
+            }
+
+        }
+
+    }
+
+
 
 `;
