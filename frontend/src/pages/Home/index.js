@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 const Page = () => {
     return (
         <div>
-            <h1> teste Home</h1>
-            <Link to="/about"> Sobre</Link>
+            <h1> Smile Home</h1>
+            <Link to="/about">  Smile sobre</Link>
         </div>
     );
 }
