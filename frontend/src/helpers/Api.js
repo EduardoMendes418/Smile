@@ -64,7 +64,16 @@ const api = {
         return json;
     },
 
-    //Busca Estados
+    //Cadastrar
+    register: async ( name, email, password, stateLoc ) => {
+        const json = await apiFetchPost(
+            '/user/signup',
+            {name, email, password, state:stateLoc}
+        );
+        return json;
+    },
+
+    //Buscar Estados
     getStates:async () => {
         const json = await apiFetchGet(
             '/states'
@@ -79,5 +88,6 @@ export default  () => api;
 
 //server http://alunos.b7web.com.br:501/ping
 
-//suporte@b7web.com.br
-//senha: 1234
+
+//teste1111@gmail.com
+//senha: 1515

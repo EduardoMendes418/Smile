@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageArea } from './styled';
 import { PageContainer, PageTitle, ErrorMessage } from '../../components/templatecomponents';
-import { doLogin, doLogout } from '../../helpers/AuthHandler';
+import { doLogin } from '../../helpers/AuthHandler';
 
 //buscando api no serve hook
 import useApi from '../../helpers/Api';
@@ -10,19 +10,17 @@ import useApi from '../../helpers/Api';
 const  Page =  () => {
     //chamando a api
     const api = useApi();
-
     //criando chamadas usestate Cadastro
     const [name, setName] = useState('');
     const [stateLoc, setStateLoc] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword ] = useState('');
+    //buscar List
     const [stateList, setStateList] = useState([]);
-    
     //btn desabilitado
     const [disabled,setDisabled] = useState(false);
     const [error, setError] = useState('');
-
 
     //ATUALIZANDO PAGINA UMA VEZ EFFECT
     useEffect(()=>{
@@ -38,24 +36,32 @@ const  Page =  () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         setDisabled(true);
+        setError('');
 
-       // const json = await api.login(email, password);
+        //senha não batem
+        if(password !== confirmPassword){
+            setError('Senhas não batem');
+            setDisabled(false);
+            return;
+        }
+
+        const json = await api.register(name, email, password, stateLoc);
 
         //teve error
-        //if(json.error){
-          //  setError(json.error);
+        if(json.error){
+            setError(json.error);
         //nao teve error
-        //}else{
-          //  doLogin(json.token, rememberPassword);
-          //  window.location.href = '/';
-        //}
+        }else{
+            doLogin(json.token);
+            window.location.href = '/';
+        }
         //debloqueia
         setDisabled(false);
     }
 
     return (
         <PageContainer>
-            <PageTitle>Cadastrar</PageTitle>
+            <PageTitle>Cadastro</PageTitle>
             <PageArea>
                 {/* MONSTRANO ERROR */}
                 {error &&
@@ -67,7 +73,7 @@ const  Page =  () => {
                         <div className="area--title">Nome Completo</div>
                         <div className="area--input">
                             <input 
-                            type="email"
+                            type="text"
                             disabled={disabled}
                             value={name}
                             onChange={e=>setName(e.target.value)}

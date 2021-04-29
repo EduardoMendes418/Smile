@@ -23,6 +23,8 @@ const  Page =  () => {
         e.preventDefault();
         //bloqueia
         setDisabled(true);
+        setError('');
+        
         const json = await api.login(email, password);
 
         //teve error
