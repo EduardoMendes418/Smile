@@ -4,11 +4,18 @@ import { Link } from 'react-router-dom';
 import logoImg from '../../../assets/logo-smile.png';
 
 //AuthHandler Cookie
-import {isLogged} from '../../../helpers/AuthHandler';
+import { isLogged, doLogout} from '../../../helpers/AuthHandler';
+
 
 const Header = () => {
     //chamando cookie
     let logged = isLogged();
+
+    //Logout  redirecionamento da pagina 
+    const handleLogout = () => {
+        doLogout();
+        window.location.href = '/';
+    }
 
     return (
         <HeaderArea>
@@ -29,7 +36,7 @@ const Header = () => {
                                     <Link to="/my-account"> Minha Conta </Link>    
                                 </li>  
                                 <li>
-                                    <button> Sair </button>
+                                    <button onClick={handleLogout}> Sair </button>
                                 </li>
                                 <li>
                                     <Link to="/signin" className="button"> Poste um anúncio </Link>

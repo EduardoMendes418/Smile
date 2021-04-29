@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PageArea } from './styled';
 import { PageContainer, PageTitle, ErrorMessage } from '../../components/templatecomponents';
-import { doLogin } from '../../helpers/AuthHandler';
+import { doLogin, doLogout } from '../../helpers/AuthHandler';
 
 //buscando api no serve hook
 import useApi from '../../helpers/Api';

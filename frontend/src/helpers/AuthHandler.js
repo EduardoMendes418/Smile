@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-//Cookie
+//Cookie verificar 
 export const isLogged = () => {
     let token  = Cookies.get('token');
     return (token) ? true : false;
@@ -13,5 +13,13 @@ export const doLogin = (token, rememberPassword =  false ) => {
     }else{
         Cookies.set('token', token); //assim q fechar navegador limpa cookie
     }
-
 }
+
+//Logout
+export const doLogout = () => {
+    Cookies.remove('token');
+}
+
+
+//suporte@b7web.com.br
+//senha:12345

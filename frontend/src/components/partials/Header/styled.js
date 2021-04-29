@@ -53,6 +53,7 @@ export const HeaderArea = styled.div`
                 font-size: 20px;
                 text-decoration: none;
                 font-family: 'Dancing Script', cursive;
+                outline:0;
 
                 &:hover{
                     color: #999;
