@@ -8,7 +8,6 @@ export const PageArea = styled.div`
         padding:10px;
         box-shadow:0px 0px 3px #999; 
 
-        
         .area {
             display:flex;
             align-items:center;
@@ -19,13 +18,11 @@ export const PageArea = styled.div`
             width:200px;
             text-align:right;
             padding-right:20px;
-            font-weight:bold;
-            font-size:18px;
-        }
-
-        .area--input{
+            font-weight:700;
+            font-size:20px;
+         }
+        .area--input {
             flex:1;
-
             input {
                 width:100%;
                 font-size:14px;
@@ -35,11 +32,24 @@ export const PageArea = styled.div`
                 outline:0;
                 transition:all ease .4s;
 
-            }
                 &:focus {
                     border:1px solid #333;
                     color:#333;
                 }
+
+            }
+
+            button {
+                background-color: #00e658;
+                border:0;
+                outline:0;
+                padding: 5px 15px;
+                border-radius: 4px;
+                color:#000;
+                font-size: 18px;
+                cursor: pointer;
+                font-family: 'Dancing Script', cursive;
+            }
 
             }
             

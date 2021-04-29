@@ -46,10 +46,13 @@ export const HeaderArea = styled.div`
             margin-left: 20px;
             maegin-right: 20px;
 
-            a{
+            a, button {
+                border:0;
+                background:none;
                 color: #000;
                 font-size: 20px;
                 text-decoration: none;
+                font-family: 'Dancing Script', cursive;
 
                 &:hover{
                     color: #999;

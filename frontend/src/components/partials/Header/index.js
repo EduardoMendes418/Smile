@@ -29,9 +29,11 @@ const Header = () => {
                                     <Link to="/my-account"> Minha Conta </Link>    
                                 </li>  
                                 <li>
-                                    <Link to="/logout"> Sair </Link>
+                                    <button> Sair </button>
                                 </li>
-                               
+                                <li>
+                                    <Link to="/signin" className="button"> Poste um anúncio </Link>
+                                </li>
                             </>
                         }
                         {!logged &&
