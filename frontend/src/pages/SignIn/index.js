@@ -10,7 +10,7 @@ import useApi from '../../helpers/Api';
 const  Page =  () => {
     //chamando a api
     const api = useApi();
-    //criando chamadas usestate
+    //criando chamadas usestate LOGIN
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberPassword, setRememberPassword ] = useState(false);

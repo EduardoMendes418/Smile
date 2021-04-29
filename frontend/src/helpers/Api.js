@@ -54,6 +54,7 @@ const apiFetchPost = async (endpoint, body) => {
 
 // REQUISICAO
 const api = {
+
     //Login
     login: async (email, password) => {
         const json = await apiFetchPost(
@@ -61,7 +62,16 @@ const api = {
             {email, password}
         );
         return json;
+    },
+
+    //Busca Estados
+    getStates:async () => {
+        const json = await apiFetchGet(
+            '/states'
+        );
+        return json.states;
     }
+
 };
 
 

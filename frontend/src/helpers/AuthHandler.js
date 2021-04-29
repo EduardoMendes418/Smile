@@ -15,10 +15,14 @@ export const doLogin = (token, rememberPassword =  false ) => {
     }
 }
 
-//Logout
+//Logout 
 export const doLogout = () => {
     Cookies.remove('token');
 }
+
+
+
+
 
 
 //suporte@b7web.com.br
