@@ -13,7 +13,6 @@ export const SeachArea = styled.div`
         box-shadow:1px 1px 1px 0.3 rgb(0,0,0,0,0.2);
         display:flex;
 
-
         form {
             flex:1;
             display:flex;

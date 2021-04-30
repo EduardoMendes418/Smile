@@ -37,6 +37,7 @@ const  Page =  () => {
            <>
             <SeachArea>
                 <PageContainer>
+
                     <div className="searchBox">
                         <form method="GET" action="/ads">
                             <input type="text" name="q" placeholder="O que voce procura ?" />
@@ -48,6 +49,7 @@ const  Page =  () => {
                             <button>Pesquisar</button>
                         </form>
                     </div>
+                    
                     <div className="categoryList">
                         {categories.map((i,k)=>
 
@@ -57,6 +59,7 @@ const  Page =  () => {
                             </Link>
                         )}
                     </div>
+                    
                 </PageContainer>
             </SeachArea>
 
