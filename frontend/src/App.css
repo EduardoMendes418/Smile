@@ -1,11 +1,11 @@
 /* Configuracao padrao */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&family=Open+Sans&family=Oswald:wght@200;300;400;700&family=Roboto&display=swap');
 
 *{
   box-sizing: border-box;
 }
 body{
   margin: 0;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'New Tegomin', serif;
   background-color: #eee;
 }

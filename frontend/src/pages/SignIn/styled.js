@@ -48,7 +48,7 @@ export const PageArea = styled.div`
                 color:#000;
                 font-size: 18px;
                 cursor: pointer;
-                font-family: 'Dancing Script', cursive;
+                font-family: 'New Tegomin', serif;
             }
 
             }

@@ -1,14 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { PageArea, SeachArea } from './styled';
+import { PageContainer } from '../../components/templatecomponents';
 
+//buscando api no serve hook
+import useApi from '../../helpers/Api';
 
-const Page = () => {
+const  Page =  () => {
+    //chamando a api
+    const api = useApi();
+
     return (
-        <div>
-            <h1> Smile Home</h1>
-            <Link to="/about">  Smile sobre</Link>
-        </div>
+        <PageContainer>
+            <PageArea>
+                <h1>Teste</h1>
+            </PageArea>
+        </PageContainer>
+
     );
 }
 
-export default Page
+export default Page;
+
