@@ -6,6 +6,6 @@
 }
 body{
   margin: 0;
-  font-family: 'New Tegomin', serif;
+  font-family: 'New Tegomin', serif !important;
   background-color: #eee;
 }
