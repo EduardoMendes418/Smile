@@ -81,13 +81,22 @@ const api = {
         return json.states;
     },
 
-    
+     //categorias   
     getCategories:async () => {
         const json = await apiFetchGet(
             '/categories'
         );
         return json.categories;
     },
+
+    //lista de produtos    
+    getAds:async (options) => {
+        const json = await apiFetchGet(
+            '/ad/list',
+            options
+        );
+        return json;
+    }
 
 };
 
