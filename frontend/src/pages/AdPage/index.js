@@ -11,7 +11,6 @@ const  Page = () => {
     const api = useApi();
     const { id } = useParams();
 
-
     const  [ locading, setLoading ] = useState(true);
     const  [adInfo , setAdInfo ] = useState([]);
 
@@ -34,9 +33,9 @@ const  Page = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className="rightSide">
-                    ...
+                    <div className="box"> ... </div>
+                    <div className="box"> ... </div>
                 </div>
             </PageArea>
         </PageContainer>
