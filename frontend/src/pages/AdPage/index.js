@@ -7,14 +7,37 @@ import { PageContainer } from '../../components/templatecomponents';
 
 
 const  Page = () => {
-
+    
     const api = useApi();
     const { id } = useParams();
 
+
+    const  [ locading, setLoading ] = useState(true);
+    const  [adInfo , setAdInfo ] = useState([]);
+
+    //Pagina Fake
     return (
         <PageContainer>
             <PageArea>
-                ...
+                <div className="leftSide">
+                    <div className="box">
+                        <div className="adImage">
+                            ...
+                        </div>
+                        <div className="adInfo">
+                            <div className="adName">
+                               ...
+                            </div>
+                            <div className="adDescrition">
+                                ...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="rightSide">
+                    ...
+                </div>
             </PageArea>
         </PageContainer>
     )
