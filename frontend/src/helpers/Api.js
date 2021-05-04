@@ -89,14 +89,24 @@ const api = {
         return json.categories;
     },
 
-    //lista de produtos    
+    //Pega lista de produtos    
     getAds:async (options) => {
         const json = await apiFetchGet(
             '/ad/list',
             options
         );
         return json;
-    }
+    },
+
+    //Pegar itens
+    getAd:async  (id, other = false) =>{
+        const json = await apiFetchGet(
+            '/ad/item',
+            {id, other}
+        );
+        return json;
+    },
+
 
 };
 
