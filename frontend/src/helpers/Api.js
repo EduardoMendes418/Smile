@@ -115,6 +115,8 @@ export default  () => api;
 
 //server http://alunos.b7web.com.br:501/ping
 
-
 //teste1111@gmail.com
 //senha: 1515
+
+//INSTALAÇÃO
+//npm install react-slideshow-image --save
