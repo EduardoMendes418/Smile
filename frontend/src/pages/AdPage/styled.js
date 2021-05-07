@@ -1,5 +1,29 @@
 import styled from 'styled-components';
 
+export const BreadChumb = styled.div`
+    font-size:18px;
+    margin-top:20px;
+
+    a{
+        display:inline-block;
+        margin: 0px 5px;
+        text-decoration:underline;
+        color: #000;
+    }
+
+`;
+
+export const OthersArea = styled.div`
+    h2 {
+        font-size:20px;
+    }
+    .list{
+        display:flex;
+      .aditem {        
+        width:25%;
+      }
+    }    
+`;
 
 export const Fake = styled.div`
      background-color: #DDD;
@@ -34,7 +58,6 @@ export const PageArea = styled.div`
             height:320px;
             margin-right:20px;
 
-
             .each-slide img{
                 display:flex;
                 align-items:center;
@@ -42,12 +65,11 @@ export const PageArea = styled.div`
                 background-size:cover;
                 height:320px;
             }
-
-
         }
 
         .adInfo{
             flex:1;
+
             .adName{
                 margin-bottom:20px;
 
@@ -67,7 +89,6 @@ export const PageArea = styled.div`
                     color:#999;
                 }
             }
-
         }
 
     }
@@ -110,5 +131,5 @@ export const PageArea = styled.div`
         }
 
     }
-
+    
 `;

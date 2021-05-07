@@ -32,6 +32,7 @@ const  Page =  () => {
         getStates();
     },[]);
 
+    
     //TRATAR FORMULARIO
     const handleSubmit = async (e) =>{
         e.preventDefault();
