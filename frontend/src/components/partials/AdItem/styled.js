@@ -12,8 +12,7 @@ export const Item = styled.div`
         border-radius:5px;
         color:#000;
         background-color: #fff;
-            
-
+        
         &:hover{
             background-color: #eee;
             border:1px solid #ccc;

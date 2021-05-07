@@ -1,34 +1,10 @@
 import styled from 'styled-components';
 
-export const BreadChumb = styled.div`
-    font-size:18px;
-    margin-top:20px;
-
-    a{
-        display:inline-block;
-        margin: 0px 5px;
-        text-decoration:underline;
-        color: #000;
-    }
-
-`;
-
-export const OthersArea = styled.div`
-    h2 {
-        font-size:20px;
-    }
-    .list{
-        display:flex;
-      .aditem {        
-        width:25%;
-      }
-    }    
-`;
-
 export const Fake = styled.div`
      background-color: #DDD;
      height:${props=>props.height || 20}px;
 `;
+
 
 export const PageArea = styled.div`
     display:flex;
@@ -129,7 +105,35 @@ export const PageArea = styled.div`
             color:#999;
             margin-top:10px;
         }
-
     }
-    
+`;
+
+
+export const OthersArea = styled.div`
+    h2 {
+        font-size:20px;
+    }
+
+    .list {
+        display:flex;
+        flex-wrap:wrap;
+
+      .aditem {        
+        width:25%;
+    }
+} 
+   
+`;
+
+export const BreadChumb = styled.div`
+    font-size:18px;
+    margin-top:20px;
+
+    a{
+        display:inline-block;
+        margin: 0px 5px;
+        text-decoration:underline;
+        color: #000;
+    }
+
 `;
