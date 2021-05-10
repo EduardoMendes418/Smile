@@ -83,12 +83,12 @@ const  Page =  () => {
         setDisabled(false)
     }
 
-    //PADRAO BRASILIERO REAIS
-    const priceMask = createNumberMask ({
-        prefix:'R$ ',
-        includeThousandsSeparator: true,
+    //PADRAO REAIS MASK
+    const priceMask = createNumberMask({
+        prefix:'R$',
+        includeThousandsSeparator:true,
         thousandsSeparatorSymbol:'.',
-        allowDecimal: true,
+        allowDecimal:true,
         decimalSymbol:','
     });
 
