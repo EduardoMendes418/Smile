@@ -44,7 +44,6 @@ const  Page =  () => {
         setDisabled(true);
         setError('');
 
-
         let errors = [];
         //CONDICAO PARA ENVIO 
         if(!title.trim()) {
@@ -53,6 +52,7 @@ const  Page =  () => {
         if(!category){
             errors.push('Sem categoria');
         }
+
         //Deu certo Formulario se nao  va para join
         if(errors.length === 0) {
             const fData = new FormData();
@@ -71,25 +71,22 @@ const  Page =  () => {
 
             //Requisicao
             const json = await api.addAd(fData);
-
-            if(!json.errors) {
+            if(!json.error) {
                 history.push(`/ad/${json.id}`);
                 return;
-            } else {
-                setError(json.errors);
+            }else {
+                setError(json.error);
             }
-
         }else{
             setError(errors.join("\n"));
         }
-
         setDisabled(false)
     }
 
     //PADRAO BRASILIERO REAIS
     const priceMask = createNumberMask ({
-        prefix:'R$',
-        incluedeThousandsSeparator: true,
+        prefix:'R$ ',
+        includeThousandsSeparator: true,
         thousandsSeparatorSymbol:'.',
         allowDecimal: true,
         decimalSymbol:','
