@@ -39,11 +39,11 @@ const Header = () => {
                                     <button onClick={handleLogout}> Sair </button>
                                 </li>
                                 <li>
-                                    <Link to="/signin" className="button"> Poste um anúncio </Link>
+                                    <Link to="/post-an-and" className="button"> Poste um anúncio </Link>
                                 </li>
                             </>
                         }
-                        {!logged &&
+                        {!logged && 
                             <>
                                 <li>
                                     <Link to="/signin"> Login </Link>    

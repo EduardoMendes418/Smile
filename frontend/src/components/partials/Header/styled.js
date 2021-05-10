@@ -52,7 +52,7 @@ export const HeaderArea = styled.div`
                 color: #000;
                 font-size: 20px;
                 text-decoration: none;
-                font-family: 'Dancing Script', cursive;
+                font-family: 'Open Sans', sans-serif;
                 outline:0;
 
                 &:hover{

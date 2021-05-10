@@ -48,7 +48,7 @@ export const PageArea = styled.div`
                 color:#000;
                 font-size: 18px;
                 cursor: pointer;
-                font-family: 'New Tegomin', serif;
+                font-family: 'Open Sans', sans-serif;
             }
 
             }

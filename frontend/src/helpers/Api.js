@@ -3,7 +3,35 @@ import qs from 'qs';
 
 const BASEAPI = 'http://alunos.b7web.com.br:501';
 
-// ****************  POST ***********************
+
+// **************** API ENVIAR ARQUIVO ***********************
+const apiFetchFile = async ( endpoint, body) => {
+    
+    //verificao de token
+    if(!body.token){
+        let token = Cookies.get('token');
+        if(token){
+            body.append('token', token);
+        }
+    }
+    const res = await fetch(BASEAPI+endpoint,{
+        method:'POST',
+        body
+    });
+    
+    const json = await res.json();
+
+    //autorizacao do usuario
+    if(json.notallowed){
+        window.location.href = '/signin';
+        return;
+    }
+
+    return json;
+
+}
+
+// **************** API ENVIAR  POST ***********************
 const apiFetchPost = async (endpoint, body) => {
     //verificao de token
     if(!body.token){
@@ -31,7 +59,7 @@ const apiFetchPost = async (endpoint, body) => {
     return json;
 }
 
-//************ GET **********************
+//************API BUSCAR INFO GET **********************
  const apiFetchGet = async (endpoint, body = []) => {
     //verificao de token
     if(!body.token){
@@ -107,6 +135,14 @@ const api = {
         return json;
     },
 
+    //enviar Arquivo 
+    addAd:async (fData) => {
+        const json = await apiFetchFile(
+            '/ad/add',
+            fData
+        );
+        return json;
+    }
 
 };
 

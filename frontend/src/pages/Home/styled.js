@@ -25,7 +25,7 @@ export const SeachArea = styled.div`
                 font-size:15px;
                 color:#000;
                 margin-right:20px;
-                font-family: 'New Tegomin', serif;
+                font-family: 'Open Sans', sans-serif;
             }    
 
             input{
@@ -47,7 +47,7 @@ export const SeachArea = styled.div`
                 height: 40px;
                 padding: 0 20px;
                 cursor:pointer;
-                font-family: 'New Tegomin', serif;
+                font-family: 'Open Sans', sans-serif;
                 font-weight: 700;
             }
         }
