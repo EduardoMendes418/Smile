@@ -14,7 +14,7 @@ const  Page =  () => {
     const history = useHistory();
 
     //buscar o parametro  exemplo:cat
-    const useQueryString = () =>{
+    const useQueryString = () => {
         return new URLSearchParams(useLocation().search);
     }
     const query = useQueryString();
@@ -24,14 +24,26 @@ const  Page =  () => {
     const [cat, setCat] = useState(query.get('cat') != null ? query.get('cat') : '');
     const [state, setState] = useState(query.get('state') != null ? query.get('state') : '');
 
-
     const [stateList, setStateList] = useState([]);
     const [categories,setCategories] = useState([]);
     const[adList, setAdList] = useState([]);
 
 
+    //Funcao criada faz a consulta do 3 filtros primeiro ai ele exibi 
+    const getAdsList = async () => {
+        const json = await api.getAds({
+            sort:'desc',
+            limit:9,
+            q,
+            cat,
+            state
+        });
+
+        setAdList(json.ads);
+    }
+
     //MONITORA cat/q/state
-    useEffect(()=> {
+    useEffect(() => {
         //codicao de verificao de states
         let queryString = [];
         if(q){
@@ -48,7 +60,9 @@ const  Page =  () => {
         history.replace({
             search:`?${queryString.join('&')}`
         });
-    },[q,cat,state]);
+
+        getAdsList();
+    }, [q, cat, state]);
 
 
     //listade estados
@@ -80,7 +94,8 @@ const  Page =  () => {
         }
         getRecentAds();
     }, []);
-    
+
+
 
     return (
         <PageContainer>
@@ -131,7 +146,13 @@ const  Page =  () => {
                     </form>
                 </div>
                 <div className="rightSide">
-                    ...
+                   {/*LISTA */}
+                   <h2>Resultados</h2>
+                   <div className="list">
+                    {adList.map((i,k)=>
+                        <AdItem  key={k} data={i} />
+                    )}  
+                   </div>
                 </div>
              </PageArea>
         </PageContainer>

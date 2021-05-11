@@ -18,7 +18,7 @@ const apiFetchFile = async ( endpoint, body) => {
         method:'POST',
         body
     });
-    
+
     const json = await res.json();
 
     //autorizacao do usuario
