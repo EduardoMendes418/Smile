@@ -8,10 +8,14 @@ import { useHistory, useLocation } from 'react-router-dom';
 //buscando api no serve hook
 import useApi from '../../helpers/Api';
 
+//timer busca
+let timer;
+
 const  Page =  () => {
     //chamando a api
     const api = useApi();
     const history = useHistory();
+  
 
     //buscar o parametro  exemplo:cat
     const useQueryString = () => {
@@ -24,13 +28,27 @@ const  Page =  () => {
     const [cat, setCat] = useState(query.get('cat') != null ? query.get('cat') : '');
     const [state, setState] = useState(query.get('state') != null ? query.get('state') : '');
 
+    //precisa de paginacao ou nao
+    const [adsTotal, setAdsTotal] = useState(0);  
+    //quantidade de paginas
+    const [pageCount, setPageCount] = useState(0);
+
+
     const [stateList, setStateList] = useState([]);
     const [categories,setCategories] = useState([]);
-    const[adList, setAdList] = useState([]);
+    const [adList, setAdList] = useState([]);
 
+    //opacidade na imagem
+    const [resultOpacity, setResultOpacity] = useState(0.4);
+    
+    //carregamento na pagina
+    const [loading, setLoading] = useState(true);
 
     //Funcao criada faz a consulta do 3 filtros primeiro ai ele exibi 
     const getAdsList = async () => {
+
+        setLoading(true);
+
         const json = await api.getAds({
             sort:'desc',
             limit:9,
@@ -38,9 +56,20 @@ const  Page =  () => {
             cat,
             state
         });
-
         setAdList(json.ads);
+        setResultOpacity(1);
+        setAdsTotal(json.total);
+        setLoading(false);
     }
+
+    //MONITORAR QUANTIDADE DE PAGINAS
+    useEffect(() => {
+         if(adList.length > 0){
+            setPageCount(Math.ceil(adsTotal / adList.length ));
+        } else{
+            setPageCount(0);
+        }  
+    }, [adsTotal]);
 
     //MONITORA cat/q/state
     useEffect(() => {
@@ -61,7 +90,16 @@ const  Page =  () => {
             search:`?${queryString.join('&')}`
         });
 
-        getAdsList();
+
+        //caso exista uma busca ele vai executar depois de dois segundo 
+        if(timer){
+            clearTimeout(timer);
+        }
+        timer = setTimeout(getAdsList, 2000);
+        //Opacidade na Imagem 
+        setResultOpacity(0.3);
+
+
     }, [q, cat, state]);
 
 
@@ -95,7 +133,11 @@ const  Page =  () => {
         getRecentAds();
     }, []);
 
-
+    //contador de paginacao
+    let pagination = [];
+    for(let i=1;i<=pageCount;i++){
+        pagination.push(i);
+    }
 
     return (
         <PageContainer>
@@ -145,14 +187,32 @@ const  Page =  () => {
                         </ul>
                     </form>
                 </div>
+                
                 <div className="rightSide">
-                   {/*LISTA */}
                    <h2>Resultados</h2>
-                   <div className="list">
+
+                    {/* CARREGAMENTO DA PAGINA */}
+                    {loading &&             
+                        <div className="listWarning"> Carregando.. </div> 
+                    }
+
+                    {!loading && adList.length === 0 &&
+                        <div className="listWarning"> Não encontramos resultados. </div> 
+                    }
+                    {/*LISTA */}
+                   <div className="list" style={{opacity:resultOpacity}}>
                     {adList.map((i,k)=>
                         <AdItem  key={k} data={i} />
                     )}  
                    </div>
+
+                    {/*PAGINACAO*/}
+                    <div className="pagination">
+                            {pagination.map((i,k)=>
+                                <div className="pagItem">{i}</div>
+                            )}
+                    </div>   
+
                 </div>
              </PageArea>
         </PageContainer>
