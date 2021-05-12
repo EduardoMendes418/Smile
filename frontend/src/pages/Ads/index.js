@@ -32,7 +32,7 @@ const  Page =  () => {
     const [adsTotal, setAdsTotal] = useState(0);  
     //quantidade de paginas
     const [pageCount, setPageCount] = useState(0);
-
+    const [currentPage, setCurrentPage] = useState(1);
 
     const [stateList, setStateList] = useState([]);
     const [categories,setCategories] = useState([]);
@@ -40,27 +40,38 @@ const  Page =  () => {
 
     //opacidade na imagem
     const [resultOpacity, setResultOpacity] = useState(0.4);
-    
+
     //carregamento na pagina
     const [loading, setLoading] = useState(true);
 
+
     //Funcao criada faz a consulta do 3 filtros primeiro ai ele exibi 
     const getAdsList = async () => {
-
+        //Loading carregamento das iamgens 
         setLoading(true);
+
+        //Resultados das proxi imagens 1,2,3,4
+        let offset = (currentPage-1) * 2;
 
         const json = await api.getAds({
             sort:'desc',
             limit:9,
             q,
             cat,
-            state
+            state,
+            offset
         });
         setAdList(json.ads);
         setResultOpacity(1);
         setAdsTotal(json.total);
         setLoading(false);
     }
+
+    //MONITORADO GETADSLIST
+    useEffect(() => {
+        setResultOpacity(0.3);
+        getAdsList();
+    }, [currentPage]);
 
     //MONITORAR QUANTIDADE DE PAGINAS
     useEffect(() => {
@@ -71,7 +82,7 @@ const  Page =  () => {
         }  
     }, [adsTotal]);
 
-    //MONITORA cat/q/state
+    //MONITORA CAT/Q/STATE
     useEffect(() => {
         //codicao de verificao de states
         let queryString = [];
@@ -90,7 +101,6 @@ const  Page =  () => {
             search:`?${queryString.join('&')}`
         });
 
-
         //caso exista uma busca ele vai executar depois de dois segundo 
         if(timer){
             clearTimeout(timer);
@@ -99,7 +109,8 @@ const  Page =  () => {
         //Opacidade na Imagem 
         setResultOpacity(0.3);
 
-
+        //Zerar a pagina assim q selecionado
+        setCurrentPage(1);
     }, [q, cat, state]);
 
 
@@ -192,7 +203,7 @@ const  Page =  () => {
                    <h2>Resultados</h2>
 
                     {/* CARREGAMENTO DA PAGINA */}
-                    {loading &&             
+                    {loading && adList.length === 0 &&             
                         <div className="listWarning"> Carregando.. </div> 
                     }
 
@@ -209,7 +220,10 @@ const  Page =  () => {
                     {/*PAGINACAO*/}
                     <div className="pagination">
                             {pagination.map((i,k)=>
-                                <div className="pagItem">{i}</div>
+                                <div 
+                                onClick={() => setCurrentPage(i)}
+                                className={ i===currentPage?'pagItem active':'pagItem'}
+                                > {i} </div>
                             )}
                     </div>   
 
