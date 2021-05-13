@@ -38,6 +38,7 @@ export const PageArea = styled.div`
         }
         .adInfo{
             flex:1;
+
             .adName{
                 margin-bottom:20px;
                 h2{
@@ -48,6 +49,7 @@ export const PageArea = styled.div`
                     color:#999;
                 }
             }
+
             .adDescription {
                 small{
                     color:#999;
@@ -93,13 +95,15 @@ export const PageArea = styled.div`
     &{
         flex-direction:column;
     }
+
     .leftSide {
         margin:0;
 
         .box{
             width:320px;
             flex-direction:column;
-            margin:auto;
+            margin: auto ;
+
         }
 
         .adInfo{
@@ -107,12 +111,13 @@ export const PageArea = styled.div`
         }
     }
 
-    .rightSide{
+    .rightSide {
         width:auto;
         margin-top:20px;
 
         .box{
-            width:320px;
+           width: 320px !important;
+           margin: auto !important;
         }
 
         .contactSellerLink{
@@ -123,9 +128,6 @@ export const PageArea = styled.div`
     }
 
 }
-
-
-
 
 `;
 
@@ -146,6 +148,7 @@ export const OthersArea = styled.div`
 
 //RESPONSIVO
 @media(max-width:700px){
+
     &{
         margin:10px;
     }
