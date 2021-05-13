@@ -21,6 +21,7 @@ export const PageArea = styled.div`
             font-weight:700;
             font-size:20px;
          }
+
         .area--input {
             flex:1;
             input {
@@ -51,10 +52,43 @@ export const PageArea = styled.div`
                 font-family: 'Open Sans', sans-serif;
             }
 
-            }
+          }
             
         }
 
     }
+
+//RESPONSIVO
+@media (max-width:700px){
+
+    form{
+
+        .area{
+            flex-direction:column;
+
+            .area--title {
+                width:100%;
+                text-align: left;
+                margin-bottom:10px;
+            }
+
+            .area--input {
+                width:100%;
+
+                 button{
+                     width:100%;
+                    padding:20px;
+                 }   
+            }
+
+        }
+
+
+
+    }
+
+
+}
+
 
 `;
