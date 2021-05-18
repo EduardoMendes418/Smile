@@ -1,0 +1,17 @@
+--users
+id
+name
+cpf
+email
+celular
+state
+token
+
+
+--states
+id
+name
+
+
+
+
