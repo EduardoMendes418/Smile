@@ -75,7 +75,7 @@ module.exports =  {
             }
 
         //VERIFICANDO SE ESTADO JA EXISTE
-        if(mongoose.Types.ObjectId.isValid(data.state)) { //se valor que estou mandadno é id valido 
+        if(mongoose.Types.ObjectId.isValid(data.state)) { // verifica se state é id valido 
             const stateItem = await State.findById(data.state);
                 if(!stateItem){
                     res.json({

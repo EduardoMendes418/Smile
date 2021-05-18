@@ -6,7 +6,7 @@ const Auth = require('./middlewares/Auth');
 
 //Validator
 const AuthValidator = require('./validators/AuthValidator');
-
+const UserValidator = require('./validators/UserValidator');
 
 //Controllers
 const AuthController = require('./controllers/AuthController');
@@ -41,6 +41,7 @@ router.post('/ad/add', Auth.private, AdsController.addAction);
 router.post('/ad/:id', Auth.private, AdsController.editAction);
 
 /****************** PUT *****************/
-router.put('/user/me', Auth.private, UserController.editAction);
+router.put('/user/me', UserValidator.editAction, Auth.private, UserController.editAction);
+
 
 module.exports = router;
