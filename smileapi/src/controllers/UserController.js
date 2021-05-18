@@ -1,11 +1,12 @@
 
 const { validationResult, matchedData } = require('express-validator');
+const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
+
 const State = require('../models/State');
 const User = require('../models/User');
 const Category = require('../models/Category');
 const Ad = require('../models/Ad');
-const { update } = require('../models/User');
-const bcrypt = require('bcrypt');
 
 
 //INFORMACAO DO PROPRIO USUARIO
@@ -61,7 +62,7 @@ module.exports = {
 
          //VALIDACAO DO ENVIO EDITAR
          const errors = validationResult(req);
-         
+
          //tem algum error nao esta vazio    
          if(!errors.isEmpty()){
              res.json({ error: errors.mapped()});
@@ -95,13 +96,15 @@ module.exports = {
                 res.json({error: 'Estado não existe'});
             }
             updates.state = data.state;
-
-            }
+        }else{
+            res.json({error: 'Codigo de estado inválido'});
+            return;
         }
+    }
 
         //VERIFICACAO TROCA DE SENHA 
         if(data.password){
-            updates.passwordHash = await bcrypt.hash(data. password, 10);
+            updates.passwordHash = await bcrypt.hash(data.password, 10);
         }
 
         //NO FIM APENAS ATUALIZAR O QUE TEM QUE ATUALIZAR
